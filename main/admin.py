@@ -8,7 +8,7 @@ admin.site.register(Contact)
 
 @admin.register(Services)
 class ServicesAdmin(admin.ModelAdmin):
-    list_display = ('name', 'description', 'is_visible', 'sort')
+    list_display = ('id', 'name', 'description', 'is_visible', 'sort')
     list_editable = ('description', 'is_visible', 'sort')
     list_filter = ('is_visible',)
     search_fields = ('name',)
@@ -16,7 +16,7 @@ class ServicesAdmin(admin.ModelAdmin):
 
 @admin.register(Portfolio)
 class PortfolioAdmin(admin.ModelAdmin):
-    list_display = ('photo_src_tag', 'name', 'description', 'is_visible', 'sort')
+    list_display = ('id', 'photo_src_tag', 'name', 'description', 'is_visible', 'sort')
     list_editable = ('description', 'name', 'is_visible', 'sort')
     list_filter = ('is_visible',)
     search_fields = ('name',)
@@ -29,7 +29,7 @@ class PortfolioAdmin(admin.ModelAdmin):
 
 @admin.register(About)
 class AboutAdmin(admin.ModelAdmin):
-    list_display = ('photo_src_tag', 'name', 'description', 'is_visible', 'sort')
+    list_display = ('id', 'photo_src_tag', 'name', 'description', 'is_visible', 'sort')
     list_editable = ('description', 'is_visible', 'sort')
     list_filter = ('is_visible',)
     search_fields = ('name',)
@@ -42,7 +42,7 @@ class AboutAdmin(admin.ModelAdmin):
 
     @admin.register(Team)
     class TeamAdmin(admin.ModelAdmin):
-        list_display = ('photo_src_tag', 'name', 'description', 'is_visible', 'sort')
+        list_display = ('id', 'photo_src_tag', 'name', 'description', 'is_visible', 'sort')
         list_editable = ('description', 'is_visible', 'sort')
         list_filter = ('is_visible',)
         search_fields = ('name',)

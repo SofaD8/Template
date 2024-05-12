@@ -19,17 +19,16 @@ from django.urls import path
 
 from django.contrib import admin
 
-from django.urls import path
-from main.views import index, index2, index3, index4
+from django.urls import path, include
+from main.views import IndexView
 from home_task import settings
 from django.conf.urls.static import static
 
+app_name = 'main'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index, name='index'),
-    path('index2', index2, name='index2'),
-    path('index3', index3, name='index3'),
-    path('index4', index4, name='index4'),
+    path('', include('main.urls')),
 ]
 
 

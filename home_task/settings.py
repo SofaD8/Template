@@ -23,11 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-j=anbc120@w-lreu1n*a^=@+upc(ts!3=$!wy*@$ic3428n%x%'
+DATABASE_URL = os.environ.get('DATABASE_URL')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS', '*')]
 
 
 # Application definition
@@ -66,6 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'main.context_processors.app_tittle',
             ],
         },
     },

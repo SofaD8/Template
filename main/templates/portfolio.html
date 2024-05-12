@@ -1,0 +1,24 @@
+    <section class="bg-light" id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="text-uppercase section-heading">{{ title_portfolio|safe }}</h2>
+                    <h3 class="text-muted section-subheading">{{ portfolio_dscr|safe }}</h3>
+                </div>
+            </div>
+            <div class="row">
+                {% for item in portfolio %}
+                <div class="col-sm-6 col-md-4 portfolio-item"><a class="portfolio-link" href="#portfolioModal1" data-bs-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content"><i class="fa fa-plus fa-3x"></i></div>
+                        </div><img class="img-fluid" src="{{ item.photo.url }}">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>{{ portfolio }}</h4>
+                        <p class="text-muted"></p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>

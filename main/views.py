@@ -1,22 +1,42 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.views.generic import TemplateView
+from .forms import ContactForm
 from .models import Services, Portfolio, About, Team, Contact
 
 
 # Create your views here.
-def index(request):
-    categories = Services.objects.filter(is_visible=True)
-    return render(request, 'index.html')
+class IndexView(TemplateView):
+    template_name = 'main.html'
 
-def index2(request):
-    categories = Portfolio.objects.filter(is_visible=True)
-    return render(request, 'index.html')
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        services = Services.objects.filter(is_visible=True)
+        portfolio = Portfolio.objects.filter(is_visible=True)
+        about = About.objects.filter(is_visible=True)
+        team = Team.objects.filter(is_visible=True)
+        contact = ContactForm()
 
-def index3(request):
-    categories = About.objects.filter(is_visible=True)
-    return render(request, 'index.html')
+        context['title_services'] = 'Services'
+        context['services_dscr'] = 'Lorem ipsum dolor sit amet consectetur'
+        context['title_portfolio'] = 'Portfolio'
+        context['portfolio_dscr'] = 'Lorem ipsum dolor sit amet consectetur.'
+        context['title_about'] = 'About'
+        context['about_dscr'] = 'Lorem ipsum dolor sit amet consectetur.'
+        context['services'] = services
+        context['portfolio'] = portfolio
+        context['about'] = about
+        context['team'] = team
+        context['contact'] = contact
 
-def index4(request):
-    categories = Team.objects.filter(is_visible=True)
-    return render(request, 'index.html')
+        return context
+
+    def post(self, request):
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect ('main:index')
+
+
+
 
