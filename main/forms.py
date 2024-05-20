@@ -15,12 +15,11 @@ class ContactForm(forms.ModelForm):
             'tel': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Your Phone *'}),
             'message': forms.Textarea(attrs={'class': 'form-control', 'id': 'message', 'placeholder': 'Your Message *'}),
         }
-        labels = {'name':'name','email':'email','tel':'tel','message':'message'}
+        labels = {'name': 'name', 'email': 'email', 'tel': 'tel', 'message': 'message'}
         help_texts = {'Input a valid phone number'}
         error_messages = {
-            'name': { 'required': 'This field is required.'},
-            'email': { 'required': 'This field is required.'},
-            'tel': { 'required': 'This field is required.'},
-            'message': { 'required': 'This field is required.'},
-
+            'name': {'required': 'This field is required.'},
+            'email': {'required': 'This field is required.'},
+            'tel': {'required': 'This field is required.'},
+            'message': {'required': 'This field is required.'},
         }
